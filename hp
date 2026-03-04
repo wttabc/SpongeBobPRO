@@ -1,0 +1,2 @@
+*定义超参数
+hidden num_heads kv_heads vocab_size FFN(SwiGLU) layer
