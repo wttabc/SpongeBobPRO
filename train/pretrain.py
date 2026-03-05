@@ -83,8 +83,8 @@ def train_epoch(epoch, loader, iters, start_step=0, swanlab=None, total_steps=No
         # Benchmark 评测
         if args.eval_bench == 1 and tokenizer is not None and global_step % args.eval_interval == 0:
             model.eval()
-            c3_path = '测试集地址'
-            xcopa_path = '测试集地址'
+            c3_path = 'D:/复试深度学习项目/benchmark/clue_c3_eval_500.jsonl'
+            xcopa_path = 'D:/复试深度学习项目/benchmark/xcopa_zh_merged.jsonl'
             eval_results = run_benchmark(model, tokenizer, c3_path, xcopa_path)
             if swanlab_run:
                 swanlab_run.log(eval_results, step=global_step)
@@ -146,7 +146,7 @@ if __name__ == "__main__":
     swanlab_run = None
     if args.use_swanlab:
         import swanlab
-        swanlab.login(api_key="你的swanlab key")
+        swanlab.login(api_key="tSGeZEJOYoFodd4Bukr67")
         swanlab_id = ckp_data.get('swanlab_id') if ckp_data else None
         swanlab_run = swanlab.init(
             project=args.swanlab_project,
@@ -206,8 +206,8 @@ if __name__ == "__main__":
     if args.eval_bench == 1 and tokenizer is not None and start_epoch == 0 and start_step == 0:
         Logger('Running initial benchmark evaluation (step 0)...')
         model.eval()
-        c3_path = '测试集地址'
-        xcopa_path = '测试集地址'
+        c3_path = 'D:/复试深度学习项目/benchmark/clue_c3_eval_500.jsonl'
+        xcopa_path = 'D:/复试深度学习项目/benchmark/xcopa_zh_merged.jsonl'
         eval_results = run_benchmark(model, tokenizer, c3_path, xcopa_path)
         if swanlab_run:
             swanlab_run.log(eval_results, step=0)
